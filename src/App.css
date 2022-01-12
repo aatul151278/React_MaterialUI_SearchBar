@@ -1,0 +1,16 @@
+.main-container{
+  padding:30px;
+}
+.App {
+  background-color: #000; 
+}
+
+.MuiFormControl-root {
+  border-bottom: 1px solid white !important;
+}
+.card-font-color, .MuiOutlinedInput-root, .MuiButtonBase-root {
+  color:#fff !important; 
+}
+.trending-bar{
+  margin-top: 30px;
+}
