@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import ImgMediaCard from './card';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {/* <ImgMediaCard /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

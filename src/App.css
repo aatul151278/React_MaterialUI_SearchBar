@@ -14,3 +14,8 @@
 .trending-bar{
   margin-top: 30px;
 }
+
+.card:hover{
+  box-shadow:-1px 10px 29px 0px  #b1a5a5 !important;
+  
+}
