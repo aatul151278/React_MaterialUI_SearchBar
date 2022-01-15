@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import news_image from './search-image.jpeg';
 // import news_image from './news.jpg';
+
 import './App.css';
+
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -15,82 +15,65 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
 import Grow from '@mui/material/Grow';
-import { makeStyles } from '@material-ui/core/styles';
-import Zoom from '@mui/material/Zoom';
+import Dialog from '@mui/material/Dialog';
+import ListItemText from '@mui/material/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+import Search from './search';
 
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
-function App() {
+export default function FullScreenDialog() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  
+
   return (
-    <div className="App">
-      <div className="main-container">
-        <Grid item xs={12}
-        >
-
-          <TextField fullWidth
-            placeholder="What you are looking for?"
-            className="card-font-color"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" className="card-font-color">
-                  <IconButton>
-                    <Icon>search</Icon>
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-          <div className="trending-bar">
-            <Typography className="card-font-color" gutterBottom variant="h7" component="div">
-              Trending
-            </Typography>
-          </div>
-          <Grid className="cards" container justifyContent="space-between" spacing={2}>
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
-              <Grid key={value} item>
-                <Grow
-                  in={true}
-                  style={{ transformOrigin: '0 0 0' }}
-                  {...(true ? { timeout: 1000 * value } : {})}
-                >
-                  <Card
-                    className="card"
-                    sx={{ maxWidth: 280 }}>
-
-                    <Zoom in={true} style={{ transitionDelay: '500ms', }}>
-
-                      <CardMedia
-                        component="img"
-                        alt="green iguana"
-                        height="170"
-                        image={news_image}
-
-                      />
-                    </Zoom>
-                    <CardContent className="card-font-color App">
-                      <Typography gutterBottom variant="h8" component="div">
-                        MTV PUSH : INTERVIEW
-                      </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                        Lizard
-                      </Typography>
-                      <Typography variant="body2">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
-                      </Typography>
-                    </CardContent>
-                    <CardActions className="card-font-color App" >
-                      <Button size="small">10/01/2022</Button>
-                    </CardActions>
-                  </Card>
-                </Grow>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-      </div>
+    <div className="content-right">
+      {/* <Button  variant="text" onClick={handleClickOpen}> */}
+        
+        <IconButton
+         
+        onClick={handleClickOpen}
+                                        edge="start"
+                                        color="inherit"
+                                        
+                                        aria-label="close"
+                                    >
+                                        <SearchIcon />
+                                    </IconButton>
+      {/* </Button> */}
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <Search closePopup={handleClose} />
+      </Dialog>
     </div>
   );
 }
 
-
-export default App;
