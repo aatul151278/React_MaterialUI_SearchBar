@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-// import news_image from './search-image.jpeg';
 import news_image from './news.jpg';
 
 import './search.css';
@@ -25,9 +23,7 @@ function Search(props) {
     return (
         <div className="App">
             <div className="main-container">
-                <Grid item xs={12}
-                >
-
+                <Grid item xs={12}>
                     <TextField fullWidth
                         placeholder="What you are looking for?"
                         className="card-font-color"

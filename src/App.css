@@ -2,3 +2,22 @@
   margin: 10px;
   float:right;
 }
+
+.main-App, .css-m9glnp-MuiPaper-root-MuiDialog-paper {
+  background-color: #000 !important; 
+  color:#fff !important;
+}
+
+.signup-popup{
+  padding-top: 10px;
+  background-color: #fff;
+}
+
+.signup-popup .MuiOutlinedInput-input{
+  color:#000 !important ;
+}
+
+.close-button{
+  display: flex;
+  justify-content: right;
+}

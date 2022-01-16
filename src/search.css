@@ -6,7 +6,7 @@
     background-color: #000; 
   }
   
-  .MuiFormControl-root {
+  .main-container .MuiFormControl-root {
     border-bottom: 1px solid white !important;
   }
   .card-font-color, .MuiOutlinedInput-root, .MuiButtonBase-root {
@@ -17,6 +17,5 @@
   }
   
   .card:hover{
-    box-shadow:-1px 10px 29px 0px  #b1a5a5 !important;
-    
+    box-shadow:-1px 10px 29px 0px  #b1a5a5 !important;    
   }
