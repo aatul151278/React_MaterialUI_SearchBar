@@ -1,32 +1,14 @@
-// import news_image from './news.jpg';
-
 import './App.css';
-
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Icon from '@mui/material/Icon';
-import Grow from '@mui/material/Grow';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import Search from './search';
+import SignUp from './Signup';
+import EmailSubscribe from './Email';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -38,42 +20,64 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function FullScreenDialog() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(0);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = (val) => {
+    setOpen(val);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpen(0);
   };
-
   
-
   return (
     <div className="content-right">
-      {/* <Button  variant="text" onClick={handleClickOpen}> */}
-        
-        <IconButton
-         
-        onClick={handleClickOpen}
-                                        edge="start"
-                                        color="inherit"
-                                        
-                                        aria-label="close"
-                                    >
-                                        <SearchIcon />
-                                    </IconButton>
-      {/* </Button> */}
+      <ButtonGroup variant="outlined" aria-label="text button group">
+        <Button
+          onClick={() => handleClickOpen(3)}>
+          Email SubScribe
+        </Button>
+        <Button
+          onClick={() => handleClickOpen(2)}>
+          Signup
+        </Button>
+        <Button
+          onClick={() => handleClickOpen(1)}>
+          Filter <SearchIcon />
+        </Button>
+      </ButtonGroup>
+
+      {/* Email Subscribe Window */}
       <Dialog
         fullScreen
-        open={open}
+        open={open == 3}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <EmailSubscribe closePopup={handleClose} />
+      </Dialog>
+
+
+      {/* Signup Window */}
+      <Dialog
+        fullScreen
+        open={open == 2}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <SignUp closePopup={handleClose} />
+      </Dialog>
+
+      {/* Searchbar Window */}
+      <Dialog
+        fullScreen
+        open={open == 1}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
         <Search closePopup={handleClose} />
       </Dialog>
+
     </div>
   );
 }
-
